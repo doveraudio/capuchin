@@ -6,7 +6,7 @@
             {
                 "name":"file",
                 "class": "Capuchin\\Command\\File",
-                "root": "\\App",
+                "root": "\\Src",
                 "aliases": [],
                 "parameters": [
                     {
@@ -37,7 +37,7 @@
                 "name":"echoinput",
                 "class":
                     "Capuchin\\Command\\EchoInput",
-                "root":"\\App",                
+                "root":"\\Src",                
                 "version":"dev",
                 "aliases": ["ei", "say", "render", "stdout", "oi", "speak", "print", "sacrebleu"],
                 "parameters": ["{input}"]
@@ -49,22 +49,22 @@
         {
             "name":"Filesystem",
             "class":"Capuchin\\Component\\Filesystem",
-            "root":"\\App"
+            "root":"\\Src"
         },
         {
             "name":"INIFormat",
             "class":"Capuchin\\Component\\INIFormat",
-            "root":"\\App"
+            "root":"\\Src"
         },
         {
             "name":"TextResponse",
             "class":"Capuchin\\Component\\TextResponse",
-            "root":"\\App"
+            "root":"\\Src"
         },
         {
             "name":"HTMLResponse",
             "class":"Capuchin\\Component\\HTMLResponse",
-            "root":"\\App"
+            "root":"\\Src"
         }
     ]   
     }

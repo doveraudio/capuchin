@@ -1,7 +1,7 @@
 <?php
 namespace Capuchin;
 $app_root = getcwd();
-$class_root = "\\src";
+$class_root = "\\App";
 include $app_root.$class_root."\\Autoload\\Autoloader.php";
 
 

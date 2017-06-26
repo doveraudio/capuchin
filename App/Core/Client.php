@@ -7,7 +7,7 @@ namespace Capuchin\Core;
 class Client
 {
     public function Client(){
-        $this->app_root = getcwd()."\\App";
+        $this->app_root = getcwd()."\\Src";
         require_once $this->app_root()."\\Autoload\\Autoloader.php";
         $this->autoloader = new Capuchin\Core\Autoload;
 

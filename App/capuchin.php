@@ -1,7 +1,7 @@
 <?php
 namespace Capuchin;
 $app_root = getcwd();
-$class_root = "\\App";
+$class_root = "\\Src";
 include $app_root.$class_root."\\Core\\Bootstrapper.php";
 class Capuchin
 {
