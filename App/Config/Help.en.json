@@ -1,0 +1,66 @@
+{
+    "Help":
+    {
+        "Commands":
+        [
+            {
+                "name":"file",
+                "description":"file: Command \"file\" enters into filesystem mode, allows management of local files. Some parameters are: load, save, and convert",
+                "version":"dev",
+                "help":"file load='./local/file.txt'  convert=''",
+                "aliases": [],
+                "parameters": [
+                    {
+                        "name":"load",
+                        "aliases":[
+                            "get"
+                        ],
+                        "description":"Load a file from a location, requires format and some output parameters to be set"
+                    },
+                    {
+                        "name":"save",
+                        "aliases":[
+                            "put"
+                        ],
+                        "description":"Save a file to a location, requires source and format parameters to be set"
+                    },
+                    {
+                        "name":"convert",
+                        "aliases":[],
+                        "description":"Load file, and 'convert' from the 'format' parameter to the 'save' parameter."
+                    },
+                    {
+                        "name":"send",
+                        "aliases":[
+                            "chain"
+                        ],
+                        "description":"Render the output of this command to a command that consumes raw input, such as 'echoinput'"
+                    }
+                ]
+                
+            },
+            {
+                "name":"echoinput",
+                "class":{
+                    "Capuchin\\Command\\EchoInput":"../Command/EchoInput"
+                },
+                "description":"Renders output to stdout, IE, Hello Capuchin!\nTell Capuchin to \"echoinput 'Hello World!'\" and see what happens!",
+                "version":"dev",
+                "help":"",
+                "aliases": ["ei", "say", "render", "stdout", "oi", "speak", "print", "sacrebleu"],
+                "parameters": ["{input}"]
+                
+            }
+        ]
+        
+
+    },
+    "Components":
+    [
+      ["Filesystem","The Core component dealing with the filesystem"],
+      ["INIFormat", "Core component for dealing with INI File formats"],
+      ["TextResponse", "Core Component. Manages text response system."],
+      ["HTMLResponse", "Core Component. Manages HTML response system."]
+    ]   
+
+}

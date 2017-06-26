@@ -1,0 +1,14 @@
+{
+    "name": "jeremyl/capuchin",
+    "description": "a console tool for various configuration tasks.",
+    "type": "project",
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "Jeremy Leach",
+            "email": "doveraudio@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

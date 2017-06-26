@@ -1,0 +1,71 @@
+{
+    "Capuchin":
+    {
+        "Commands":
+        [
+            {
+                "name":"file",
+                "class": "Capuchin\\Command\\File",
+                "root": "\\App",
+                "aliases": [],
+                "parameters": [
+                    {
+                        "name":"load",
+                        "aliases":[
+                            "get"
+                        ]
+                    },
+                    {
+                        "name":"save",
+                        "aliases":[
+                            "put"
+                        ]
+                        },
+                    {
+                        "name":"convert",
+                        "aliases":[]
+                    },
+                    {
+                        "name":"send",
+                        "aliases":[
+                            "chain"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name":"echoinput",
+                "class":
+                    "Capuchin\\Command\\EchoInput",
+                "root":"\\App",                
+                "version":"dev",
+                "aliases": ["ei", "say", "render", "stdout", "oi", "speak", "print", "sacrebleu"],
+                "parameters": ["{input}"]
+            }
+        ]
+     ,
+    "Components":
+    [
+        {
+            "name":"Filesystem",
+            "class":"Capuchin\\Component\\Filesystem",
+            "root":"\\App"
+        },
+        {
+            "name":"INIFormat",
+            "class":"Capuchin\\Component\\INIFormat",
+            "root":"\\App"
+        },
+        {
+            "name":"TextResponse",
+            "class":"Capuchin\\Component\\TextResponse",
+            "root":"\\App"
+        },
+        {
+            "name":"HTMLResponse",
+            "class":"Capuchin\\Component\\HTMLResponse",
+            "root":"\\App"
+        }
+    ]   
+    }
+}

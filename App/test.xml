@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<report>
+
+  <header>
+    <generated>Wed 21 Jun 2017 04:08:30 PM EDT</generated>
+    <server>ofnh2o (127.0.0.1:5432)</server>
+    <database>open_food_network_dev</database>
+    <schema>public</schema>
+    <table>enterprises</table>
+    <title>Columns list report</title>
+  </header>
+
+  <section id="s1" number="1" name="Columns">
+    <table>
+      <columns>
+        <column id="c1" number="1" name="Column" />
+        <column id="c2" number="2" name="Owner" />
+        <column id="c3" number="3" name="Comment" />
+      </columns>
+      <rows>
+        <row id="r1" number="1" c1="id" c2="" c3="" />
+        <row id="r2" number="2" c1="name" c2="" c3="" />
+        <row id="r3" number="3" c1="description" c2="" c3="" />
+        <row id="r4" number="4" c1="long_description" c2="" c3="" />
+        <row id="r5" number="5" c1="is_primary_producer" c2="" c3="" />
+        <row id="r6" number="6" c1="contact" c2="" c3="" />
+        <row id="r7" number="7" c1="phone" c2="" c3="" />
+        <row id="r8" number="8" c1="email" c2="" c3="" />
+        <row id="r9" number="9" c1="website" c2="" c3="" />
+        <row id="r10" number="10" c1="twitter" c2="" c3="" />
+        <row id="r11" number="11" c1="abn" c2="" c3="" />
+        <row id="r12" number="12" c1="acn" c2="" c3="" />
+        <row id="r13" number="13" c1="address_id" c2="" c3="" />
+        <row id="r14" number="14" c1="pickup_times" c2="" c3="" />
+        <row id="r15" number="15" c1="next_collection_at" c2="" c3="" />
+        <row id="r16" number="16" c1="created_at" c2="" c3="" />
+        <row id="r17" number="17" c1="updated_at" c2="" c3="" />
+        <row id="r18" number="18" c1="distributor_info" c2="" c3="" />
+        <row id="r19" number="19" c1="logo_file_name" c2="" c3="" />
+        <row id="r20" number="20" c1="logo_content_type" c2="" c3="" />
+        <row id="r21" number="21" c1="logo_file_size" c2="" c3="" />
+        <row id="r22" number="22" c1="logo_updated_at" c2="" c3="" />
+        <row id="r23" number="23" c1="promo_image_file_name" c2="" c3="" />
+        <row id="r24" number="24" c1="promo_image_content_type" c2="" c3="" />
+        <row id="r25" number="25" c1="promo_image_file_size" c2="" c3="" />
+        <row id="r26" number="26" c1="promo_image_updated_at" c2="" c3="" />
+        <row id="r27" number="27" c1="visible" c2="" c3="" />
+        <row id="r28" number="28" c1="facebook" c2="" c3="" />
+        <row id="r29" number="29" c1="instagram" c2="" c3="" />
+        <row id="r30" number="30" c1="linkedin" c2="" c3="" />
+        <row id="r31" number="31" c1="owner_id" c2="" c3="" />
+        <row id="r32" number="32" c1="sells" c2="" c3="" />
+        <row id="r33" number="33" c1="confirmation_token" c2="" c3="" />
+        <row id="r34" number="34" c1="confirmed_at" c2="" c3="" />
+        <row id="r35" number="35" c1="confirmation_sent_at" c2="" c3="" />
+        <row id="r36" number="36" c1="unconfirmed_email" c2="" c3="" />
+        <row id="r37" number="37" c1="shop_trial_start_date" c2="" c3="" />
+        <row id="r38" number="38" c1="producer_profile_only" c2="" c3="" />
+        <row id="r39" number="39" c1="permalink" c2="" c3="" />
+        <row id="r40" number="40" c1="charges_sales_tax" c2="" c3="" />
+        <row id="r41" number="41" c1="email_address" c2="" c3="" />
+        <row id="r42" number="42" c1="require_login" c2="" c3="" />
+        <row id="r43" number="43" c1="allow_guest_orders" c2="" c3="" />
+        <row id="r44" number="44" c1="invoice_text" c2="" c3="" />
+        <row id="r45" number="45" c1="display_invoice_logo" c2="" c3="" />
+        <row id="r46" number="46" c1="allow_order_changes" c2="" c3="" />
+      </rows>
+    </table>
+  </section>
+
+</report>
