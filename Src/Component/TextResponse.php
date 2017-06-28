@@ -5,7 +5,7 @@ namespace Capuchin\Component;
 class TextResponse extends Component
 {
     private $textvalue;
-
+    
     public function setTextValue($value){
 
         $this->textvalue = $value;

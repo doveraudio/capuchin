@@ -2,7 +2,7 @@
 
 namespace Capuchin\Core;
 
-class Tokenizer
+abstract class Tokenizer
 {
     public function Tokenizer(){
 
@@ -10,7 +10,13 @@ class Tokenizer
 
     private $input;
 
-    
+    public function setInputStream(){
+    }
+
+    private function TokenizeParameterStream(){
+
+
+    }
 
 
 }

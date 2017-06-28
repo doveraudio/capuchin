@@ -3,19 +3,23 @@ namespace Capuchin\Core;
 
 class Autoload
 {
-    
-
     /**
      * Autoloader
      * Constructor for Autoloader Class
      * @return void
      */
-    public function Autoload(){
-        $this->prefixes = Array();
-        $this->app_root = getcwd();
+    public function Autoload($files){
+        $this->files = array($files);
     }
-
-    
+    /**
+     * public function invoke
+     * instructs the autoloader to load all of the files in its buffer.
+     * 
+     * @return void
+     */
+    public function invoke(){
+        $this->loadFiles();
+    }
     /**
      * $classes
      *
@@ -30,13 +34,9 @@ class Autoload
     private $files;
 
     protected function loadFiles(){
-        // look through base directories for this classfile
+        //Load the files from the Bootstrapper System
         foreach($this->files as $file){
-            // if the file exists, require it
             $this->requireFile($file);
-                //Autoloader.php final Endpoint
-                
-            
         }
     } 
     /**

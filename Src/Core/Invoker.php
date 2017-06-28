@@ -12,7 +12,7 @@ class Invoker
     private $command;
     
     public function invoke(){
-        
+        $this->command->invoke();
     }
 
     public function setCommand($command){
