@@ -5,28 +5,31 @@ namespace Capuchin\Core;
 class ConsoleTokenizer extends Tokenizer
 {
     public function Tokenizer(){
-
+        $this->tokenStream = array();
     }
 
     private $input;
-
-    public function setInputStream(){
+    private $tokenstream;
+    public function setInputStream($value){
+        $this->tokenstream[] = ["command" => $value[0]];
+        array_shift($value);
+        $this->tokenstream[] = ["parameters" => TokenizeParameterStream($value)];
     }
+    public function getTokenStream(){
 
-    private function TokenizeParameterStream(){
+    }
+    private function TokenizeParameterStream($values){
 
-        $input = array_filter($args, function($key){
-return strpos($key, '--') === 0;
-});
-$output = [];
-foreach($input as $command){
-    $tuple = ltrim($command, "--");
-    $output[]= explode("=", $tuple);
+        $values = array_filter($args, function($key){
+                                return strpos($key, '--') === 0;
+                            });
+        $output = [];
+        foreach($values as $parameter){
+            $tuple = ltrim($parameter, "--");
+            $output[]= explode("=", $tuple);
 
-}
-return $output;
-
-
+        }
+        return $output;
     }
 
 

@@ -10,13 +10,9 @@ abstract class Tokenizer
 
     private $input;
 
-    public function setInputStream(){
-    }
+    public abstract function setInputStream($value);
 
-    private function TokenizeParameterStream(){
-
-
-    }
+    public abstract function TokenizeParameterStream();
 
 
 }

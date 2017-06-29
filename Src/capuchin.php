@@ -8,7 +8,7 @@ class Capuchin
     public function Capuchin(){
         //Create a new instance of the Client.
         //Client creates insttance Bootstrapper,
-        // Initializes and callls Bootstrapper
+        // Initializes and calls Bootstrapper
         //Which:
         // Loads config files
         // Creates instance of Autoloader

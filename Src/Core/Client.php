@@ -61,7 +61,7 @@ class Client
     public function bootstrap(){
         $this->bootstrapper->register();
     }
-
+    
     
 
     public function destroy(){

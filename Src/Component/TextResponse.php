@@ -15,7 +15,7 @@ class TextResponse extends Component
         return $this->textvalue;
     }
 
-    public function EchoTextValue(){
+    public function echoTextValue(){
         echo $this->textvalue;
     }
 }

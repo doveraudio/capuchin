@@ -11,6 +11,10 @@ class Bootstrapper
     private $files;
     private $classes;
     public function Bootstrapper(){
+        
+    }
+
+    public function register(){
         $this->app_root = getcwd();
         $this->loadConfig();
         $this->autoload();
