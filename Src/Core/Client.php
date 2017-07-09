@@ -9,8 +9,9 @@ class Client
     public function Client(){
         $this->app_root = getcwd()."\\Src";
         require_once $this->app_root()."\\Core\\Bootstrapper.php";
+        require_once $this->app_root()."\\Core\\Autoload.php";
         $this->bootstrapper = new Capuchin\Core\Bootstrapper();
-
+    
     }
     /**
      * $app_root
@@ -45,6 +46,8 @@ class Client
      * @var array[string]
      */
     private $classes;
+    private $consoleEngine;
+  
     /**
      * boostrap
      *
@@ -52,14 +55,18 @@ class Client
      */
 
     
-    private $consoleEngine;
-
-
-    public function bootstrap(){
+     public function bootstrap(){
         $this->bootstrapper->register();
+        $this->help = $this->bootstrapper->getHelp();
+        $this->config = $this->bootstrapper->getConfig();
+        $this->classes = $this->bootstrapper->getClasses();
     }
     
-    
+    public function initialize(){
+        $this->consoleEngine = new \Capuchin\Core\ConsoleEngine();
+        $this->consoleEngine->configure($this->config);
+        
+    }    
 
     public function destroy(){
 

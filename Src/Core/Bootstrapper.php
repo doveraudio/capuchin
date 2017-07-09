@@ -10,28 +10,31 @@ class Bootstrapper
     private $app_root;
     private $files;
     private $classes;
+    private $class_root;
+
     public function Bootstrapper(){
-        
+        $this->class_root = '\\Src\\';
     }
 
     public function register(){
         $this->app_root = getcwd();
+        $this->class_root = '\\Src';
         $this->loadConfig();
         $this->autoload();
     }
     
     private function loadConfig(){
-        $this->config_file = file_get_contents($app_root.$class_root."\\Config\\Autoload.json");
+        $this->config_file = file_get_contents($this->app_root.$this->class_root."\\Config\\Autoload.json");
         $this->config = json_decode($this->config_file);
-        $help_file = file_get_contents($app_root.$class_root."\\Config\\Help.en.json");
+        $help_file = file_get_contents($this->app_root.$this->class_root."\\Config\\Help.en.json");
         $this->help = json_decode($help_file);
-        $this->loadClasses();
+        $this->loadFiles();
     }
 
     private function loadFiles(){
         $this->files = array();
         $this->classes = array();
-        foreach($config->Capuchin->Components as $component){
+        foreach($this->config->Capuchin->Components as $component){
             $class_root = $component->root;
             $file = str_replace("\\","/",$this->app_root.$class_root.$component->class).".php";
             if(file_exists($file)){
@@ -39,7 +42,7 @@ class Bootstrapper
                 $this->classes[] = $component->class;
             }
         }
-        foreach($config->Capuchin->Commands as $command){
+        foreach($this->config->Capuchin->Commands as $command){
             $class_root = $command->root;
             $file = str_replace("\\","/",$this->app_root.$class_root.$command->class).".php";
             if(file_exists($file)){
@@ -52,7 +55,7 @@ class Bootstrapper
     }
 
     private function autoload(){
-        $autoloader = new \Capuchin\Core\Autoload($this->files);
+        $autoloader = new Autoload($this->files);
 
     }
 
@@ -64,4 +67,12 @@ class Bootstrapper
         return $this->classes;
     }
 
+    public function getConfig(){
+        return $this->config;
+    }
+
+    public function getHelp(){
+        return $this->help;
+    }
+    
 }

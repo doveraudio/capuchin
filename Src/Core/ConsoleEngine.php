@@ -11,7 +11,7 @@ class ConsoleEngine
         $this->invoker = new Invoker();
         
     }
-
+    
     private $tokenizer;
     private $invoker;
     private $parser;
@@ -25,7 +25,8 @@ class ConsoleEngine
         $this->tokenizer->setTokenStream($args);
         $this->tokenizer->process();
         $data = $this->tokenizer->getTokenStream();
-
+        
+        
         
         return $data;
     }
@@ -45,7 +46,12 @@ class ConsoleEngine
         }else{
             return false;
         }
-        
+    
     }
+
+    public function configure($config){
+        $this->parser->dictionary = $config->Capuchin->Commands;
+    }
+
 
 }

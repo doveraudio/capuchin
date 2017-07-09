@@ -1,13 +1,19 @@
 <?php
 namespace Capuchin;
 $app_root = getcwd();
-$class_root = "\\App";
-include $app_root.$class_root."\\Autoload\\Autoloader.php";
+$class_root = "\\Src";
 
+        require_once $app_root.$class_root."\\Core\\Bootstrapper.php";
+        require_once $app_root.$class_root."\\Core\\Autoload.php";
 
-$auto = new Autoload\Autoloader();
-$auto->register();
+$boots = new \Capuchin\Core\Bootstrapper();
+$boots->register();
 
+echo json_encode($boots->getFiles()).PHP_EOL;
+echo json_encode($boots->getClasses()).PHP_EOL;
+echo json_encode($boots->getConfig()).PHP_EOL;
+echo json_encode($boots->getHelp()).PHP_EOL;
+/*
 $config_file = file_get_contents($app_root.$class_root."\\Config\\Autoload.json");
 $help_file = file_get_contents($app_root.$class_root."\\Config\\Help.en.json");
 $config = json_decode($config_file);
@@ -37,4 +43,4 @@ echo "Component Files: ".PHP_EOL;
 
 foreach($config->Capuchin->Components as $component){
     echo str_replace("\\","/",$app_root.$class_root.$component->class).".php".PHP_EOL;
-}
+}*/

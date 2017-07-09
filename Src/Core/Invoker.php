@@ -4,7 +4,7 @@ namespace Capuchin\Core;
 class Invoker
 {
 
-
+    
     public function Invoker(){
 
     }
