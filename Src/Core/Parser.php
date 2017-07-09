@@ -21,9 +21,10 @@ class Parser
         $this->command = $command;
     }
     function setParameters(Array $args){
-        
+        $this->parameters = $args;
     }
 
+    
 
 
 }

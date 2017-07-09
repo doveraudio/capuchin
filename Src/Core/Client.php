@@ -51,11 +51,8 @@ class Client
      * @return void
      */
 
-    private $invoker;
-
-    private $parser;
-
-    private $tokenizer;
+    
+    private $consoleEngine;
 
 
     public function bootstrap(){

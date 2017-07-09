@@ -1,6 +1,6 @@
 <?php
 
-namespace Capuchin\Component;
+namespace \Capuchin\Component;
 
 class TextResponse extends Component
 {
