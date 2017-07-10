@@ -1,6 +1,14 @@
 {
     "Capuchin": {
         "Commands": [{
+                "name": "command",
+                "class": "/Command/Command",
+                "root": "/Src",
+                "version": "dev",
+                "aliases": [],
+                "parameters": []
+            },
+            {
                 "name": "file",
                 "class": "/Command/File",
                 "root": "/Src",
@@ -39,6 +47,11 @@
             }
         ],
         "Components": [{
+                "name": "Component",
+                "class": "/Component/Component",
+                "root": "/Src"
+            },
+            {
                 "name": "Filesystem",
                 "class": "/Component/Filesystem",
                 "root": "/Src"
@@ -58,6 +71,56 @@
                 "class": "/Component/HTMLResponse",
                 "root": "/Src"
             }
+        ],
+        "Core": [{
+                "name": "autoload",
+                "class": "/Core/Autoload",
+                "root": "/Src"
+
+            },
+            {
+                "name": "bootstrapper",
+                "class": "/Core/Bootstrapper",
+                "root": "/Src"
+
+            },
+            {
+                "name": "client",
+                "class": "/Core/Client",
+                "root": "/Src"
+
+            },
+            {
+                "name": "invoker",
+                "class": "/Core/Invoker",
+                "root": "/Src"
+
+            },
+            {
+                "name": "parser",
+                "class": "/Core/Parser",
+                "root": "/Src"
+
+            },
+            {
+                "name": "tokenizer",
+                "class": "/Core/Tokenizer",
+                "root": "/Src"
+
+            },
+            {
+                "name": "consoleengine",
+                "class": "/Core/ConsoleEngine",
+                "root": "/Src"
+
+            },
+            {
+                "name": "consoletokenizer",
+                "class": "/Core/ConsoleTokenizer",
+                "root": "/Src"
+
+            }
+
         ]
     }
 }

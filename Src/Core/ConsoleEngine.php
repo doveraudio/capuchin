@@ -1,10 +1,10 @@
 <?php
 
-namespace \Capuchin\Core;
+namespace Capuchin\Core;
 
 class ConsoleEngine
 {
-    public function ConsoleEngine(){
+    public function __construct(){
 
         $this->tokenizer = new ConsoleTokenizer();
         $this->parser = new Parser();

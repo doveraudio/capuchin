@@ -5,7 +5,7 @@ class Invoker
 {
 
     
-    public function Invoker(){
+    public function __construct(){
 
     }
 

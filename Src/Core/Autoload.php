@@ -8,8 +8,10 @@ class Autoload
      * Constructor for Autoloader Class
      * @return void
      */
-    public function Autoload($files){
-        $this->files = array($files);
+    public function __construct($files){
+
+        $this->files = $files;
+        echo "autoloading.....".json_encode($files).PHP_EOL;
     }
     /**
      * public function invoke
@@ -23,20 +25,41 @@ class Autoload
     /**
      * $classes
      *
-     * @var [string]
+     * @var string
      */
     private $classes;
     /**
      * $files
      *
-     * @var [string]
+     * @var array
      */
     private $files;
+    /**
+     * $log
+     *
+     * @var string
+     */
+    private $log;
+
+
+    public function getLog(){
+        return $this->log;
+    }
 
     protected function loadFiles(){
         //Load the files from the Bootstrapper System
+
+        echo json_encode($this->files);
         foreach($this->files as $file){
-            $this->requireFile($file);
+            $success = $this->requireFile($file);
+            if($success){
+                echo $file.":autoload success".PHP_EOL;
+                $this->log .= $file.":autoload success".PHP_EOL;
+            }else{
+                $this->log .= $file.":autoload failed".PHP_EOL;
+                echo $file.":autoload failed".PHP_EOL;
+            }
+            
         }
     } 
     /**
@@ -47,6 +70,7 @@ class Autoload
      */
     protected function requireFile($file)
     {
+        $this->log .= "Loading ".$file."... ".PHP_EOL;
         if(file_exists($file)){
             require_once($file);
             return true;

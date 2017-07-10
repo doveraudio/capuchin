@@ -18,7 +18,10 @@ echo PHP_EOL;
 echo json_encode($boots->getHelp()).PHP_EOL;
 echo PHP_EOL;
 
+//echo $boots->getLog();
 echo $boots->getLog();
+
+echo $boots->getAutoloadLog();
 echo PHP_EOL;
 /*
 $config_file = file_get_contents($app_root.$class_root."/Config/Autoload.json");

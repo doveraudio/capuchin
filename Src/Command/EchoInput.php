@@ -5,7 +5,7 @@ namespace Capuchin\Command;
 class EchoInput extends Command
 {
     
-    public function EchoInput($input){
+    public function __construct($input){
         $this->parameters = array($input);
         $this->parameters[] = $input;
 

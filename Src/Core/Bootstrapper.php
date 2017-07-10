@@ -12,7 +12,8 @@ class Bootstrapper
     private $classes;
     private $class_root;
     private $log;
-    public function Bootstrapper(){
+    private $autoloaderLog;
+    public function __construct(){
         $this->class_root = '/Src/';
     }
 
@@ -34,6 +35,19 @@ class Bootstrapper
     private function loadFiles(){
         $this->files = array();
         $this->classes = array();
+        foreach($this->config->Capuchin->Core as $core){
+            $class_root = $core->root;
+            $file = str_replace("\\","/",$this->app_root.$class_root.$core->class).".php";
+            if(file_exists($file)){
+                $this->files[]=$file;
+                $this->classes[] = $core->class;    
+           $this->log .= $file.": Success".PHP_EOL;
+            }else{
+                 $this->log .= $file.": Failed".PHP_EOL;
+            }   
+         
+
+        }
         foreach($this->config->Capuchin->Components as $component){
             $class_root = $component->root;
             $file = str_replace("\\","/",$this->app_root.$class_root.$component->class).".php";
@@ -58,11 +72,15 @@ class Bootstrapper
          
 
         }
+        
     }
 
     private function autoload(){
+        
+        echo json_encode($this->files);
         $autoloader = new Autoload($this->files);
-
+        $autoloader->invoke();
+        $this->autoloadLog = $autoloader->getLog();
     }
 
     public function getFiles(){
@@ -83,6 +101,11 @@ class Bootstrapper
 
     public function getLog(){
         return $this->log;
+    }
+
+    public function getAutoloadLog(){
+        echo "getting autoloadlog".PHP_EOL;
+        return $this->autoloadLog;
     }
     
 }

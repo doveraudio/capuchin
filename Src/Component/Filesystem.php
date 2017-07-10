@@ -1,5 +1,5 @@
 <?php
-namespace \Capuchin\Component;
+namespace Capuchin\Component;
 
 class Filesystem extends Component
 {

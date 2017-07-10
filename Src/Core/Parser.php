@@ -1,10 +1,10 @@
 <?php
 
-namespace \Capuchin\Core;
+namespace Capuchin\Core;
 
 class Parser
 {
-    public function Parser(){
+    public function __construct(){
 
 
 

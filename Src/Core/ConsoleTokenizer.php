@@ -4,7 +4,7 @@ namespace Capuchin\Core;
 
 class ConsoleTokenizer extends Tokenizer
 {
-    public function ConsoleTokenizer(){
+    public function __construct(){
         $this->tokenStream = array();
     }
 
@@ -24,7 +24,7 @@ class ConsoleTokenizer extends Tokenizer
         return $this->tokenstream;
     }
 
-    private function TokenizeParameterStream(){
+    public function TokenizeParameterStream(){
         $stream = $this->input;
         array_shift($stream);
         $values = array_filter($stream, function($key){

@@ -6,7 +6,7 @@ namespace Capuchin\Core;
  */
 class Client
 {
-    public function Client(){
+    public function __construct(){
         $this->app_root = getcwd()."/Src/";
         require_once $this->app_root()."/Core/Bootstrapper.php";
         require_once $this->app_root()."/Core/Autoload.php";

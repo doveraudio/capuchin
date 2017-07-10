@@ -4,15 +4,15 @@ namespace Capuchin\Core;
 
 abstract class Tokenizer
 {
-    public function Tokenizer(){
+    public function __construct(){
 
     }
 
     private $input;
 
-    public abstract function setInputStream($value);
+    abstract function setInputStream($value);
 
-    public abstract function TokenizeParameterStream();
+    abstract function TokenizeParameterStream();
 
 
 }
