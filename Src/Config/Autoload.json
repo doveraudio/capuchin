@@ -1,71 +1,63 @@
 {
-    "Capuchin":
-    {
-        "Commands":
-        [
-            {
-                "name":"file",
-                "class": "Capuchin\\Command\\File",
-                "root": "\\Src",
+    "Capuchin": {
+        "Commands": [{
+                "name": "file",
+                "class": "/Command/File",
+                "root": "/Src",
                 "aliases": [],
-                "parameters": [
-                    {
-                        "name":"load",
-                        "aliases":[
+                "parameters": [{
+                        "name": "load",
+                        "aliases": [
                             "get"
                         ]
                     },
                     {
-                        "name":"save",
-                        "aliases":[
+                        "name": "save",
+                        "aliases": [
                             "put"
                         ]
-                        },
-                    {
-                        "name":"convert",
-                        "aliases":[]
                     },
                     {
-                        "name":"send",
-                        "aliases":[
+                        "name": "convert",
+                        "aliases": []
+                    },
+                    {
+                        "name": "send",
+                        "aliases": [
                             "chain"
                         ]
                     }
                 ]
             },
             {
-                "name":"echoinput",
-                "class":
-                    "Capuchin\\Command\\EchoInput",
-                "root":"\\Src",                
-                "version":"dev",
+                "name": "echoinput",
+                "class": "/Command/EchoInput",
+                "root": "/Src",
+                "version": "dev",
                 "aliases": ["ei", "say", "render", "stdout", "oi", "speak", "print", "sacrebleu"],
                 "parameters": ["{input}"]
             }
+        ],
+        "Components": [{
+                "name": "Filesystem",
+                "class": "/Component/Filesystem",
+                "root": "/Src"
+            },
+            {
+                "name": "INIFormat",
+                "class": "/Component/INIFormat",
+                "root": "/Src"
+            },
+            {
+                "name": "TextResponse",
+                "class": "/Component/TextResponse",
+                "root": "/Src"
+            },
+            {
+                "name": "HTMLResponse",
+                "class": "/Component/HTMLResponse",
+                "root": "/Src"
+            }
         ]
-     ,
-    "Components":
-    [
-        {
-            "name":"Filesystem",
-            "class":"Capuchin\\Component\\Filesystem",
-            "root":"\\Src"
-        },
-        {
-            "name":"INIFormat",
-            "class":"Capuchin\\Component\\INIFormat",
-            "root":"\\Src"
-        },
-        {
-            "name":"TextResponse",
-            "class":"Capuchin\\Component\\TextResponse",
-            "root":"\\Src"
-        },
-        {
-            "name":"HTMLResponse",
-            "class":"Capuchin\\Component\\HTMLResponse",
-            "root":"\\Src"
-        }
-    ]   
     }
 }
