@@ -15,11 +15,12 @@ class Bootstrapper
     private $autoloaderLog;
     public function __construct(){
         $this->class_root = '/Src/';
+        $this->app_root = getcwd();
+        require_once $this->app_root.$this->class_root."/Core/Autoload.php";
     }
 
     public function register(){
-        $this->app_root = getcwd();
-        $this->class_root = '/Src/';
+        
         $this->loadConfig();
         $this->autoload();
     }
@@ -77,7 +78,7 @@ class Bootstrapper
 
     private function autoload(){
         
-        echo json_encode($this->files);
+        //$this->log .= json_encode($this->files);
         $autoloader = new Autoload($this->files);
         $autoloader->invoke();
         $this->autoloadLog = $autoloader->getLog();
@@ -104,7 +105,7 @@ class Bootstrapper
     }
 
     public function getAutoloadLog(){
-        echo "getting autoloadlog".PHP_EOL;
+        $this->log .= "getting autoloadlog".PHP_EOL;
         return $this->autoloadLog;
     }
     

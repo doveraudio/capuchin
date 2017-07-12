@@ -8,9 +8,8 @@ class Client
 {
     public function __construct(){
         $this->app_root = getcwd()."/Src/";
-        require_once $this->app_root()."/Core/Bootstrapper.php";
-        require_once $this->app_root()."/Core/Autoload.php";
-        $this->bootstrapper = new Capuchin\Core\Bootstrapper();
+        require_once $this->app_root."/Core/Bootstrapper.php";
+        $this->bootstrapper = new \Capuchin\Core\Bootstrapper();
     
     }
     /**
@@ -49,7 +48,7 @@ class Client
     private $consoleEngine;
   
     /**
-     * boostrap
+     * bootstrap
      *
      * @return void
      */

@@ -17,7 +17,7 @@ class Parser
 
     private $values;
     public function setDictionary($commands){
-        $this->dictionary = $commands;
+        $this->dictionary[] = $commands;
     }
     public function setCommand(string $command){
         $this->command = $command;
@@ -27,7 +27,11 @@ class Parser
     }
 
     public function getCommandClass(){
-        
+        // this is where we literally just call out the class by name, via string, fully namespaced, 
+        // and php, like wizard poweers, delivers it.
+        if(array_search($this->command,$this->dictionary, false)!==false){
+            
+        }
     }
 
 

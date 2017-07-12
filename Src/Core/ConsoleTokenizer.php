@@ -11,7 +11,7 @@ class ConsoleTokenizer extends Tokenizer
     private $input;
     private $tokenstream;
 
-    public function setInputStream($value){
+    public function setInputStream($stream){
         $this->input = $stream;
     }
     public function process(){
