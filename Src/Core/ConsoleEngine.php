@@ -50,7 +50,7 @@ class ConsoleEngine
     }
 
     public function configure($config){
-        $this->parser->dictionary = $config->Capuchin->Commands;
+        $this->parser->setDictionary($config->Capuchin->Commands);
     }
 
 

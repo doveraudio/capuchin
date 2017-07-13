@@ -23,7 +23,7 @@ class TestClient {
         try{
         $this->client = new \Capuchin\Core\Client();
         $this->client->bootstrap();
-        //$this->client->initialize();
+        $this->client->initialize();
         return true;
         
         }

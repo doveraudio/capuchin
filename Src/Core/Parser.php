@@ -19,6 +19,11 @@ class Parser
     public function setDictionary($commands){
         $this->dictionary[] = $commands;
     }
+
+    public function getDictionary(){
+        return $this->dictionary;
+    }
+
     public function setCommand(string $command){
         $this->command = $command;
     }
