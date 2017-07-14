@@ -66,7 +66,7 @@ class Client
         $this->consoleEngine->configure($this->config);
         
     }    
-
+    
     public function destroy(){
 
         

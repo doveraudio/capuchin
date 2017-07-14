@@ -18,7 +18,12 @@ class Invoker
     public function setCommand($command){
         $this->command = $command;
     }
-
+    
+    public function setParameters($data){
+        $this->command
+    }
+    
+    
     public function getCommand(){
 
         return $this->command;

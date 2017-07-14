@@ -31,12 +31,19 @@ class Parser
         $this->parameters = $args;
     }
 
-    public function getCommandClass(){
+    public function getCommand(){
         // this is where we literally just call out the class by name, via string, fully namespaced, 
         // and php, like wizard poweers, delivers it.
         if(array_search($this->command,$this->dictionary, false)!==false){
-            
+            return $this->command;
+        }else{
+            $this->log('Invalid Command: '.$this->command);
+            return "error";
         }
+    }
+    
+    public function getParameters(){
+        
     }
 
 

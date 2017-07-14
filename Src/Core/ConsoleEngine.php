@@ -9,12 +9,15 @@ class ConsoleEngine
         $this->tokenizer = new ConsoleTokenizer();
         $this->parser = new Parser();
         $this->invoker = new Invoker();
+        $this->commandFactory = new CommandFactory();
         
     }
     
     private $tokenizer;
-    private $invoker;
     private $parser;
+    private $commandFactory;
+    private $invoker;
+    
     //define now, implement later;
     // need subversive logging engine.
     private $log;
@@ -24,7 +27,13 @@ class ConsoleEngine
         $args = $this->getConsoleData();
         $this->tokenizer->setTokenStream($args);
         $this->tokenizer->process();
-        $data = $this->tokenizer->getTokenStream();
+        $tokenStream = $this->tokenizer->getTokenStream();
+        $this->parser->setCommand($tokenStream['command']);
+        $class = $this->parser->getCommand();
+        $command = null;
+        if($class!=='error'){
+           $command = \Capuchin\Core\CommandFactory::getInstance($class);
+        }
         
         
         

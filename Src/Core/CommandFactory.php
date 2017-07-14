@@ -24,11 +24,11 @@ class CommandFactory {
     
     private $namespace;
     
-    public function getInstance($classname){
+    public static function getInstance($classname, $data){
         $class = $this->namepsace.$classname;
         if(class_exists($class)){
             
-            return new $class;
+            return new $class($data);
         }
     }
     
