@@ -91,6 +91,12 @@
 
             },
             {
+                "name": "CommandFactory",
+                "class": "/Core/CommandFactory",
+                "root": "/Src"
+
+            },
+            {
                 "name": "invoker",
                 "class": "/Core/Invoker",
                 "root": "/Src"

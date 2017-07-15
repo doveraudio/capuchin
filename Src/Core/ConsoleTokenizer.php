@@ -18,7 +18,7 @@ class ConsoleTokenizer extends Tokenizer
         $stream = $this->input;
         $this->tokenstream[] = ["command" => $stream[0]];
         array_shift($stream);
-        $this->tokenstream[] = ["parameters" => TokenizeParameterStream()];
+        $this->tokenstream[] = ["parameters" => $this->TokenizeParameterStream()];
     }
     public function getTokenStream(){
         return $this->tokenstream;

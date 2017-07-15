@@ -7,7 +7,7 @@ class Filesystem extends Component
 
     }
 
-    public function saveFile($filename){
+    public function saveFile($filename, $content){
 
     }
 

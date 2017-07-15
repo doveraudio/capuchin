@@ -5,7 +5,7 @@ $class_root = "\\Src";
 include $app_root.$class_root."\\Core\\Bootstrapper.php";
 class Capuchin
 {
-    public function Capuchin(){
+    public function __construct(){
         //Create a new instance of the Client.
         //Client creates insttance Bootstrapper,
         // Initializes and calls Bootstrapper

@@ -6,7 +6,7 @@ abstract class Command{
     abstract public function invoke();
 
     abstract public function getParameters();
-    abstract public function setParameters();
+    abstract public function setParameters($values);
     
     
 }
