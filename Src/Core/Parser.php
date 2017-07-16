@@ -19,7 +19,7 @@ class Parser
     public function setDictionary($commands){
         $this->dictionary[] = $commands;
     }
-
+    
     public function getDictionary(){
         return $this->dictionary;
     }
@@ -43,7 +43,7 @@ class Parser
     }
     
     public function getParameters(){
-        
+        return $this->parameters();
     }
 
 
