@@ -67,6 +67,20 @@ class Client
         
     }    
     
+    public function getDictionary(){
+        return $this->consoleEngine->getDictionary();
+    }
+    
+    public function setCommand($value){
+        $this->consoleEngine->setCommand($value);
+    }
+    public function getNamespace(){
+        return 'crap';
+    }
+    public function getCommandInstance(){
+        $this->consoleEngine->getCommandInstance();
+    }
+    
     public function destroy(){
 
         

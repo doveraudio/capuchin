@@ -17,7 +17,7 @@ class ConsoleEngine
     private $parser;
     private $commandFactory;
     private $invoker;
-    
+    private $tokenStream;
     //define now, implement later;
     // need subversive logging engine.
     private $log;
@@ -27,20 +27,18 @@ class ConsoleEngine
         $args = $this->getConsoleData();
         $this->tokenizer->setTokenStream($args);
         $this->tokenizer->process();
-        $tokenStream = $this->tokenizer->getTokenStream();
+        $this->tokenStream = $this->tokenizer->getTokenStream();
         $this->parser->setCommand($tokenStream['command']);
         $class = $this->parser->getCommand();
         $command = null;
         if($class!=='error'){
            $command = \Capuchin\Core\CommandFactory::getInstance($class);
         }
-        
-        
-        
-        return $data;
+        return $args;
     }
 
-
+    
+    
     private function getConsoleData(){
         $data = $argv;
         array_shift($data);
@@ -57,10 +55,37 @@ class ConsoleEngine
         }
     
     }
-
-    public function configure($config){
-        $this->parser->setDictionary($config->Capuchin->Commands);
+    public function getDictionary(){
+        return $this->parser->getDictionary();
     }
-
+    
+    public function setCommand($value){
+    
+        $this->parser->setCommand($value);
+        
+    }
+    
+    public function getCommandInstance(){
+        if($this->parser->getCommand()!== 'error'){
+        return $this->commandFactory->getInstance('\\Capuchin\\Command\\EchoInput',  ["Hello World"]);
+        }
+    
+    }
+    public function configure($config){
+        $dictionary = array();
+        // set the dictionary to all command names, and alieases, providing each key command with a value for the proper command,
+        //  whether alias or precise command.
+        
+        foreach($config->Capuchin->Commands as $command){
+            $dictionary[$command->name] = $command->name;
+            foreach($command->aliases as $alias)
+            {
+                $dictionary[$alias] = $command->name;
+            }
+        }
+        
+        $this->parser->setDictionary($dictionary);
+    }
+    
 
 }

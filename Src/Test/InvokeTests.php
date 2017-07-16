@@ -16,7 +16,7 @@ require_once getcwd()."/Src/Test/Core/TestClient.php";
 class InvokeTests {
     public function __construct(){
         $this->log = "Initialized.".PHP_EOL;
-        $this->log .= "Loading Test Classes";
+        $this->log .= "Loading Test Classes".PHP_EOL;
         
         $this->tests[] = new \Capuchin\Test\Core\TestClient();
     }

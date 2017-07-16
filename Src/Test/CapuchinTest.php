@@ -11,4 +11,4 @@ $testSuite = new \Capuchin\Test\InvokeTests();
 
 $testSuite->assert();
 
-$testSuite->renderLogStdOut();
+//$testSuite->renderLogStdOut();
