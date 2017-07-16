@@ -28,7 +28,7 @@ class ConsoleEngine
         $this->tokenizer->setTokenStream($args);
         $this->tokenizer->process();
         $this->tokenStream = $this->tokenizer->getTokenStream();
-        $this->parser->setCommand($tokenStream['command']);
+        $this->parser->setCommand($this->tokenStream['command']);
         $class = $this->parser->getCommand();
         $command = null;
         if($class!=='error'){
@@ -67,7 +67,7 @@ class ConsoleEngine
     
     public function getCommandInstance(){
         if($this->parser->getCommand()!== 'error'){
-        return $this->commandFactory->getInstance('\\Capuchin\\Command\\EchoInput',  ["Hello World"]);
+        return $this->commandFactory->getInstance($this->parser->getCommand(), $this->tokenStream['parameters']);
         }
     
     }
@@ -77,10 +77,10 @@ class ConsoleEngine
         //  whether alias or precise command.
         
         foreach($config->Capuchin->Commands as $command){
-            $dictionary[$command->name] = $command->name;
+            $dictionary[$command->name]  = "\\Capuchin" . str_replace("/","\\",$command->class);
             foreach($command->aliases as $alias)
             {
-                $dictionary[$alias] = $command->name;
+                $dictionary[$alias] = "\\Capuchin" . str_replace("/","\\",$command->class);
             }
         }
         

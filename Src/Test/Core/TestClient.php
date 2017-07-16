@@ -25,15 +25,20 @@ class TestClient {
         $this->client->bootstrap();
         $this->client->initialize();
         //echo json_encode($this->client->getDictionary());
-       // $this->client->setCommand("say");
-        $ccm = new \Capuchin\Core\CommandFactory();
+        $this->client->setCommand("say");
+        echo $this->client->getCommandInstance();
+        //echo json_encode($this->client->getCommandInstance());
         $class = "\Capuchin\Command\EchoInput";
         $instance = new $class("Hello World");
         //$instance->setParameters("Hello World");
-        $instance->invoke();
-        //$class->invoke();
-        //echo json_encode($this->client->getCommandInstance());
+        $result = $instance->invoke();
+        if($result == "Hello World"){
         return true;
+        }
+        else{
+            return false;
+            
+        }
         
         }
         catch(Exception $ex){

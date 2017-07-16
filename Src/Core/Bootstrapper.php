@@ -65,7 +65,7 @@ class Bootstrapper
             $file = str_replace("\\","/",$this->app_root.$class_root.$command->class).".php";
             if(file_exists($file)){
                 $this->files[]=$file;
-                $this->classes[] = $command->class;    
+                $this->classes[$command->name] = $command->class;    
            $this->log .= $file.": Success".PHP_EOL;
             }else{
                  $this->log .= $file.": Failed".PHP_EOL;
@@ -103,7 +103,7 @@ class Bootstrapper
     public function getLog(){
         return $this->log;
     }
-
+    
     public function getAutoloadLog(){
         $this->log .= "getting autoloadlog".PHP_EOL;
         return $this->autoloadLog;

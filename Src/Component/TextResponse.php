@@ -16,6 +16,6 @@ class TextResponse extends Component
     }
 
     public function echoTextValue(){
-        return $this->textvalue;
+        echo $this->textvalue.PHP_EOL;
     }
 }

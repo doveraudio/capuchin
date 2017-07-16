@@ -74,8 +74,8 @@ class Client
     public function setCommand($value){
         $this->consoleEngine->setCommand($value);
     }
-    public function getNamespace(){
-        return 'crap';
+    public function getNamespace($value){
+        return "\\Capuchin" . str_replace("/","\\",$this->classes[$value]->class);
     }
     public function getCommandInstance(){
         $this->consoleEngine->getCommandInstance();
