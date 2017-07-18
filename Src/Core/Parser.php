@@ -41,17 +41,17 @@ class Parser
 
     public function getCommand(){
         //echo json_encode($this->dictionary);
-        echo json_encode($this->dictionary[$this->command]).PHP_EOL;
-        
+        $namespace =  $this->dictionary[$this->command];
+        return $namespace;
         // this is where we literally just call out the class by name, via string, fully namespaced, 
         // and php, like wizard poweers, delivers it.
         //$tuple = array_search($this->command,$this->dictionary, false);
        // return $this->dictionary[$this->command];
 //$name = $this->dictionary[$this->command];
-       $name = array_search($this->command,$this->dictionary) ;
-       if($name!==null && $name!==""){
-            echo $name;
-            return $name;
+       
+       if($namespace!==null && $namespace!==""){
+            
+            return $namespace;
         }else{
             echo ('Invalid Command: '.$this->command);
             return "error";

@@ -28,12 +28,13 @@ class TestClient {
 //        echo json_encode($this->client->getDictionary()["ei"]);
         //echo json_encode($this->client->getClasses());
         
-        echo $this->client->getCommand();
+        
         //echo json_encode($this->client->getCommandInstance());
-        $class = "\Capuchin\Command\EchoInput";
+        $class = $this->client->getCommand();
         $instance = new $class("Hello World");
-        //$instance->setParameters("Hello World");
+        $instance->setParameters("Hello World");
         $result = $instance->invoke();
+        echo json_encode($result);
         if($result == "Hello World"){
         return true;
         }

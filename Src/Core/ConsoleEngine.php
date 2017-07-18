@@ -70,7 +70,7 @@ class ConsoleEngine
     
     public function getCommand(){
     
-        $this->parser->getCommand();
+        return $this->parser->getCommand();
         
     }
 

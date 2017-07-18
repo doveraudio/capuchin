@@ -78,13 +78,13 @@ class Client
     }
 
     public function getCommand(){
-        $this->consoleEngine->getCommand();
+        return $this->consoleEngine->getCommand();
     }
     public function getNamespace($value){
         return "\\Capuchin" . str_replace("/","\\",$this->classes[$value]->class);
     }
     public function getCommandInstance(){
-        $this->consoleEngine->getCommandInstance();
+        return $this->consoleEngine->getCommandInstance();
     }
     
     public function destroy(){

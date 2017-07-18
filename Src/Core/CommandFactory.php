@@ -29,6 +29,8 @@ class CommandFactory {
         if(class_exists($class)){
             
             return new $class($parameters);
+        }else{
+            return 'error';
         }
     }
     
