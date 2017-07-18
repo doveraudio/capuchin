@@ -28,6 +28,9 @@ class ConsoleEngine
         $this->tokenizer->setTokenStream($args);
         $this->tokenizer->process();
         $this->tokenStream = $this->tokenizer->getTokenStream();
+
+        echo json_encode($this->tokenStream);
+
         $this->parser->setCommand($this->tokenStream['command']);
         $class = $this->parser->getCommand();
         $command = null;
@@ -65,9 +68,17 @@ class ConsoleEngine
         
     }
     
+    public function getCommand(){
+    
+        $this->parser->getCommand();
+        
+    }
+
     public function getCommandInstance(){
         if($this->parser->getCommand()!== 'error'){
         return $this->commandFactory->getInstance($this->parser->getCommand(), $this->tokenStream['parameters']);
+        }else{
+            return 'error';
         }
     
     }

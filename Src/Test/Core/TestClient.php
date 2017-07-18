@@ -24,9 +24,11 @@ class TestClient {
         $this->client = new \Capuchin\Core\Client();
         $this->client->bootstrap();
         $this->client->initialize();
-        //echo json_encode($this->client->getDictionary());
-        $this->client->setCommand("say");
-        echo $this->client->getCommandInstance();
+        $this->client->setCommand("ei");
+//        echo json_encode($this->client->getDictionary()["ei"]);
+        //echo json_encode($this->client->getClasses());
+        
+        echo $this->client->getCommand();
         //echo json_encode($this->client->getCommandInstance());
         $class = "\Capuchin\Command\EchoInput";
         $instance = new $class("Hello World");

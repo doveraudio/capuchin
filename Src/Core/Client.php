@@ -70,9 +70,15 @@ class Client
     public function getDictionary(){
         return $this->consoleEngine->getDictionary();
     }
-    
+    public function getClasses(){
+        return $this->classes;
+    }
     public function setCommand($value){
         $this->consoleEngine->setCommand($value);
+    }
+
+    public function getCommand(){
+        $this->consoleEngine->getCommand();
     }
     public function getNamespace($value){
         return "\\Capuchin" . str_replace("/","\\",$this->classes[$value]->class);

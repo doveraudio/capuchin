@@ -11,7 +11,7 @@ class Autoload
     public function __construct($files){
 
         $this->files = $files;
-        echo "autoloading.....".json_encode($files).PHP_EOL;
+        $this->log .= "autoloading.....".PHP_EOL.json_encode($files).PHP_EOL;
     }
     /**
      * public function invoke
@@ -49,15 +49,15 @@ class Autoload
     protected function loadFiles(){
         //Load the files from the Bootstrapper System
 
-        echo json_encode($this->files);
+        $this->log .= json_encode($this->files);
         foreach($this->files as $file){
             $success = $this->requireFile($file);
             if($success){
-                echo $file.":autoload success".PHP_EOL;
+                //echo $file.":autoload success".PHP_EOL;
                 $this->log .= $file.":autoload success".PHP_EOL;
             }else{
                 $this->log .= $file.":autoload failed".PHP_EOL;
-                echo $file.":autoload failed".PHP_EOL;
+                //echo $file.":autoload failed".PHP_EOL;
             }
             
         }
