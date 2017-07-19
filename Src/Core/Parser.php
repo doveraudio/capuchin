@@ -9,13 +9,19 @@ class Parser
 
 
     }
-
+    private $log;
     private $dictionary;
     private $command;
 
     private $parameters;
 
     private $values;
+    public function appendLog($value){
+        $this->log .= $value;
+    }
+    public function getLog(){
+        return $this->log;
+    }
     public function setDictionary($values){
         
         $this->dictionary = $values;
@@ -29,33 +35,31 @@ class Parser
     }
 
     public function setCommand(string $command){
-        
+        if(key_exists($command, $this->dictionary)){
         $this->command = $command;
+        return $this->command;
         
+        }else{
+            $this->command = 'error';
+        }
+      
     }
     function setParameters(Array $args){
         
         $this->parameters = $args;
         
     }
-
+    
     public function getCommand(){
+        return $this->command;
+    }
+    
+    public function getClass(){
         //echo json_encode($this->dictionary);
-        $namespace =  $this->dictionary[$this->command];
-        return $namespace;
-        // this is where we literally just call out the class by name, via string, fully namespaced, 
-        // and php, like wizard poweers, delivers it.
-        //$tuple = array_search($this->command,$this->dictionary, false);
-       // return $this->dictionary[$this->command];
-//$name = $this->dictionary[$this->command];
-       
-       if($namespace!==null && $namespace!==""){
             
-            return $namespace;
-        }else{
-            echo ('Invalid Command: '.$this->command);
-            return "error";
-        }
+        return  $this->dictionary[$this->command];
+       
+        
     }
     
     public function getParameters(){

@@ -44,6 +44,14 @@
                 "version": "dev",
                 "aliases": ["ei", "say", "render", "stdout", "oi", "speak", "print", "sacrebleu"],
                 "parameters": ["{input}"]
+            },
+            {
+                "name": "error",
+                "class": "/Command/Error",
+                "root": "/Src",
+                "version": "dev",
+                "aliases": [],
+                "parameters": ["{input}"]
             }
         ],
         "Components": [{

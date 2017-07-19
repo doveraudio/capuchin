@@ -12,9 +12,14 @@ class Invoker
     private $command;
     
     public function invoke(){
-        $this->command->invoke();
+       return $this->command->invoke();
     }
-
+    
+    public function prepare($value, $values){
+        $this->setCommand($value);
+        $this->setParameters($values);
+    }
+    
     public function setCommand($value){
         $this->command = $value;
     }

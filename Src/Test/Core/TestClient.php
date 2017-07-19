@@ -7,6 +7,7 @@
  */
 namespace Capuchin\Test\Core;
 require_once getcwd()."/Src/"."/Core/Client.php";
+
 /**
  * Description of TestClient
  *
@@ -24,16 +25,8 @@ class TestClient {
         $this->client = new \Capuchin\Core\Client();
         $this->client->bootstrap();
         $this->client->initialize();
-        $this->client->setCommand("ei");
-        //echo json_encode($this->client->getDictionary()["ei"]);
-        //echo json_encode($this->client->getClasses());
-        //echo json_encode($this->client->getCommandInstance());
-        $class = $this->client->getCommand();
-        $instance = new $class("Hello World");
-        $instance->setParameters("Hello World");
-        $result = $instance->invoke();
-        echo json_encode($result);
-        if($result == "Hello World"){
+        $result = $this->client->run();
+        if($result == "Hello World!"){
         return true;
         }
         else{

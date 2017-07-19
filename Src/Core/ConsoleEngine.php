@@ -23,29 +23,34 @@ class ConsoleEngine
     private $log;
     private $error_log; 
     
-    public function Engage(){
-        $args = $this->getConsoleData();
-        $this->tokenizer->setTokenStream($args);
-        $this->tokenizer->process();
-        $this->tokenStream = $this->tokenizer->getTokenStream();
-
-        echo json_encode($this->tokenStream);
-
+    public function engage(){
+        $this->initialize();
         $this->parser->setCommand($this->tokenStream['command']);
-        $class = $this->parser->getCommand();
-        $command = null;
-        if($class!=='error'){
-           $command = \Capuchin\Core\CommandFactory::getInstance($class);
-        }
-        return $args;
+        return $this->invoke();
+       
     }
 
+    private function processArgs(){
+        $args = $this->getConsoleData();
+        $this->tokenizer->setinputStream($args);
+        $this->tokenizer->process();
+        $this->tokenStream = $this->tokenizer->getTokenStream();
+    }
     
+    public function getTokenStream(){
+       return $this->tokenStream;
+        
+    }
+    
+    public function getInputArgs(){
+        return getConsoleData();
+    }
     
     private function getConsoleData(){
+        global $argc, $argv;
         $data = $argv;
         array_shift($data);
-        checkArgs($data);
+        $this->checkArgs($data);
         return $data;
 
    }
@@ -75,13 +80,33 @@ class ConsoleEngine
     }
 
     public function getCommandInstance(){
-        if($this->parser->getCommand()!== 'error'){
-        return $this->commandFactory->getInstance($this->parser->getCommand(), $this->tokenStream['parameters']);
+        $class = $this->parser->getClass();
+        if($class!== 'error'){
+        return $this->commandFactory->getInstance($class, $this->tokenStream['parameters']);
         }else{
             return 'error';
         }
     
     }
+    
+    public function initialize(){
+        $this->processArgs();
+    }
+    
+    public function invoke(){
+        $command = $this->getCommandInstance();
+        
+        if($command!== 'error'){
+        $this->invoker->prepare($command, $this->tokenStream['parameters']);
+        return $this->invoker->invoke();
+        
+        }else{
+            return 'error';
+        }
+    }
+    
+    
+    
     public function configure($config){
         $dictionary = array();
         // set the dictionary to all command names, and alieases, providing each key command with a value for the proper command,

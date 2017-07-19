@@ -87,6 +87,29 @@ class Client
         return $this->consoleEngine->getCommandInstance();
     }
     
+    public function getInputArgs(){
+        return $this->consoleEngine->getInputArgs();
+    }
+    
+    public function run(){
+        
+        try{
+        
+        $this->bootstrap();
+        $this->initialize();
+        $result = $this->consoleEngine->Engage();
+        
+        return $result;
+        
+        }
+        catch(Exception $ex){
+            $this->log = json_encode($ex);
+        return false;
+    }
+    
+        
+    }
+    
     public function destroy(){
 
         

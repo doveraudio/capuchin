@@ -2,7 +2,7 @@
 namespace Capuchin;
 $app_root = getcwd();
 $class_root = "\\Src";
-include $app_root.$class_root."\\Core\\Bootstrapper.php";
+require_once getcwd()."/Src/"."/Core/Client.php";
 class Capuchin
 {
     public function __construct(){
@@ -13,9 +13,30 @@ class Capuchin
         // Loads config files
         // Creates instance of Autoloader
         // Autoloader loads the existing classes 
-        $this->client = new Client();    
+        $this->client = new \Capuchin\Core\Client();    
     }
     private $client;
-
-
+    private $log;
+    public function run(){
+        $this->client->bootstrap();
+        $this->client->initialize();
+        $result = $this->client->run();
+    }
+    
+    public function appendLog($value){
+        $this->log .= $value;
+    }
 }
+
+
+$capuchin = new Capuchin();
+
+try{
+       
+        $result = $capuchin->run();
+        }
+        catch(Exception $ex){
+            $capuchin->appendLog(json_encode($ex));
+        return false;
+    }
+    

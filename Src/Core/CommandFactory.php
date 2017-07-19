@@ -25,7 +25,7 @@ class CommandFactory {
     private $namespace;
     
     public function getInstance($classname, $parameters){
-        $class = $this->namespace.$classname;
+        $class = $classname;
         if(class_exists($class)){
             
             return new $class($parameters);
