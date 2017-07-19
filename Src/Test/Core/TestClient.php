@@ -25,10 +25,8 @@ class TestClient {
         $this->client->bootstrap();
         $this->client->initialize();
         $this->client->setCommand("ei");
-//        echo json_encode($this->client->getDictionary()["ei"]);
+        //echo json_encode($this->client->getDictionary()["ei"]);
         //echo json_encode($this->client->getClasses());
-        
-        
         //echo json_encode($this->client->getCommandInstance());
         $class = $this->client->getCommand();
         $instance = new $class("Hello World");
@@ -40,7 +38,6 @@ class TestClient {
         }
         else{
             return false;
-            
         }
         
         }
