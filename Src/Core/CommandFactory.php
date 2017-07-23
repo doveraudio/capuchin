@@ -26,6 +26,7 @@ class CommandFactory {
     
     public function getInstance($classname, $parameters){
         $class = $classname;
+        //echo "CommandFactory: getInstance:".PHP_EOL.$classname;
         if(class_exists($class)){
             
             return new $class($parameters);

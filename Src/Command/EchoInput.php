@@ -23,9 +23,7 @@ class EchoInput extends Command
     public function invoke()
     {
         $this->component->setTextValue($this->parameters);
-        //echo $this->parameters[0];
-        //return $this->component->echoTextValue();
-       $this->component->echoTextValue();
+        $this->component->echoTextValue();
        return $this->component->getTextValue();
     }
 

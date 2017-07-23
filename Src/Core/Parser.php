@@ -14,8 +14,7 @@ class Parser
     private $command;
 
     private $parameters;
-
-    private $values;
+    private $rawInput;
     public function appendLog($value){
         $this->log .= $value;
     }
@@ -34,9 +33,10 @@ class Parser
         
     }
 
-    public function setCommand(string $command){
-        if(key_exists($command, $this->dictionary)){
-        $this->command = $command;
+    public function setCommand(string $value){
+        //echo "Parser: setCommand:".PHP_EOL.$value.PHP_EOL;
+        if(key_exists($value, $this->dictionary["commands"])){
+        $this->command = $value;
         return $this->command;
         
         }else{
@@ -45,7 +45,6 @@ class Parser
       
     }
     function setParameters(Array $args){
-        
         $this->parameters = $args;
         
     }
@@ -55,15 +54,31 @@ class Parser
     }
     
     public function getClass(){
-        //echo json_encode($this->dictionary);
-            
-        return  $this->dictionary[$this->command];
+                return  $this->dictionary["commands"][$this->command];
        
         
     }
     
+    public function setRawInput($input){
+        if(is_array($input)){
+           $this->rawInput = implode("",$input); 
+        } else {
+        $this->rawInput = $input;
+        }
+    }
+    
+    public function getRawInput(){
+        return $this->rawInput;
+    }
+    
     public function getParameters(){
-        return $this->parameters();
+        if($this->dictionary["parameters"][$this->command][0]=="{input}"){
+            return $this->rawInput;
+        }else{
+            
+        return $this->parameters;
+        
+        }
     }
 
 

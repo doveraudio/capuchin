@@ -23,8 +23,45 @@ class ConsoleEngine
     private $log;
     private $error_log; 
     
+    
+    public function configure($config){
+        $dictionary = array();
+        // set the dictionary to all command names, and alieases, providing each key command with a value for the proper command,
+        //  whether alias or precise command.
+        
+        foreach($config->Capuchin->Commands as $command){
+            $dictionary["commands"][$command->name]  = "\\Capuchin" . str_replace("/","\\",$command->class);
+            $dictionary["parameters"][$command->name] =  $command->parameters;
+            foreach($command->aliases as $alias)
+            {
+                $dictionary["commands"][$alias] = "\\Capuchin" . str_replace("/","\\",$command->class);
+                $dictionary["parameters"][$alias] =  $command->parameters;
+            }
+        }
+        
+        $this->parser->setDictionary($dictionary);
+    }
+    
+     public function initialize(){
+        $this->processArgs();
+    }
+    
+    public function invoke(){
+        $command = $this->getCommandInstance();
+        
+        if($command!== 'error'){
+        $this->invoker->prepare($command, $this->tokenStream['parameters']);
+        return $this->invoker->invoke();
+        
+        }else{
+            return 'error';
+        }
+    }
+    
+    
     public function engage(){
         $this->initialize();
+        //echo PHP_EOL."TOKENSTREAM:".PHP_EOL.json_encode($this->tokenStream);
         $this->parser->setCommand($this->tokenStream['command']);
         return $this->invoke();
        
@@ -37,6 +74,8 @@ class ConsoleEngine
         $this->tokenStream = $this->tokenizer->getTokenStream();
     }
     
+    
+    
     public function getTokenStream(){
        return $this->tokenStream;
         
@@ -48,8 +87,12 @@ class ConsoleEngine
     
     private function getConsoleData(){
         global $argc, $argv;
+        
         $data = $argv;
         array_shift($data);
+        //echo "GETCONSOLEDATA:91";
+        //echo json_encode($data);
+        $this->parser->setRawInput($this->tokenStream['rawInput']);
         $this->checkArgs($data);
         return $data;
 
@@ -81,47 +124,19 @@ class ConsoleEngine
 
     public function getCommandInstance(){
         $class = $this->parser->getClass();
+        //echo "ConsoleEngine: getInstance:".PHP_EOL.$class;
         if($class!== 'error'){
-        return $this->commandFactory->getInstance($class, $this->tokenStream['parameters']);
+        
+        return $this->commandFactory->getInstance($class, $this->parser->getParameters());
         }else{
             return 'error';
         }
     
     }
     
-    public function initialize(){
-        $this->processArgs();
-    }
-    
-    public function invoke(){
-        $command = $this->getCommandInstance();
-        
-        if($command!== 'error'){
-        $this->invoker->prepare($command, $this->tokenStream['parameters']);
-        return $this->invoker->invoke();
-        
-        }else{
-            return 'error';
-        }
-    }
+   
     
     
-    
-    public function configure($config){
-        $dictionary = array();
-        // set the dictionary to all command names, and alieases, providing each key command with a value for the proper command,
-        //  whether alias or precise command.
-        
-        foreach($config->Capuchin->Commands as $command){
-            $dictionary[$command->name]  = "\\Capuchin" . str_replace("/","\\",$command->class);
-            foreach($command->aliases as $alias)
-            {
-                $dictionary[$alias] = "\\Capuchin" . str_replace("/","\\",$command->class);
-            }
-        }
-        
-        $this->parser->setDictionary($dictionary);
-    }
     
 
 }

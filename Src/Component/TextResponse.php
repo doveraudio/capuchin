@@ -16,6 +16,6 @@ class TextResponse extends Component
     }
 
     public function echoTextValue(){
-        echo $this->textvalue.PHP_EOL;
+        echo json_encode($this->textvalue).PHP_EOL;
     }
 }
