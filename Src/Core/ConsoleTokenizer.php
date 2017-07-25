@@ -10,7 +10,7 @@ class ConsoleTokenizer extends Tokenizer
 
     private $input;
     private $tokenstream;
-
+    private $log;
     public function setInputStream($stream){
         $this->input = $stream;
     }
@@ -18,9 +18,15 @@ class ConsoleTokenizer extends Tokenizer
         $stream = $this->input;
          $rawinput = $stream;
          array_shift($rawinput);
+         $parameters = [];
+         if(count($stream)>1){
+         $parameters = $this->TokenizeParameterStream();
+         }else{
+             $parameters = [];
+         }
          $this->tokenstream = [
             "command"     => $stream[0],
-            "parameters" => $this->TokenizeParameterStream(),
+            "parameters" => $parameters,
             "rawInput"   => $rawinput
                 ]
                 ;
@@ -41,7 +47,13 @@ class ConsoleTokenizer extends Tokenizer
             $output[]= explode("=", $tuple);
     }
     if(count($output)==0){
+        if(count($stream)>1){
         $output = $stream[1];
+        }else{
+            $output = "";
+        }
+        
+        
     }
     return $output;
     }
