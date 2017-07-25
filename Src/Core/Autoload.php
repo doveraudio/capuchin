@@ -53,11 +53,9 @@ class Autoload
         foreach($this->files as $file){
             $success = $this->requireFile($file);
             if($success){
-                //echo $file.":autoload success".PHP_EOL;
                 $this->log .= $file.":autoload success".PHP_EOL;
             }else{
                 $this->log .= $file.":autoload failed".PHP_EOL;
-                //echo $file.":autoload failed".PHP_EOL;
             }
             
         }

@@ -72,10 +72,7 @@ class Parser
     }
     
     public function getParameters(){
-        //echo PHP_EOL.json_encode($this->dictionary).PHP_EOL;
         if(in_array("{input}",$this->dictionary["parameters"][$this->command])){
-            //echo "THE DICTIONARY HAS THE KEY";
-            //echo $this->rawInput;
             return $this->rawInput;
         }else{
             
