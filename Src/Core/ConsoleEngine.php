@@ -50,7 +50,9 @@ class ConsoleEngine
         $command = $this->getCommandInstance();
         
         if($command!== 'error'){
-        $this->invoker->prepare($command, $this->tokenStream['parameters']);
+        //echo "LINE 53, ConsoleEngine.php".PHP_EOL.json_encode($this->parser);
+        $this->invoker->prepare($command, $this->parser->getParameters());
+
         return $this->invoker->invoke();
         
         }else{
@@ -63,6 +65,11 @@ class ConsoleEngine
         $this->initialize();
         //echo PHP_EOL."TOKENSTREAM:".PHP_EOL.json_encode($this->tokenStream);
         $this->parser->setCommand($this->tokenStream['command']);
+        //echo PHP_EOL."ConsoleEngine.PHP";
+        //echo PHP_EOL.$this->parser->getCommand().PHP_EOL;
+        $this->parser->setRawInput($this->tokenStream['rawInput']);
+        //echo "ConsoleEngine.PHP".PHP_EOL."$this->tokenStream['parameters']=".$this->tokenStream['parameters'];
+        $this->parser->setParameters([]);
         return $this->invoke();
        
     }
@@ -124,7 +131,9 @@ class ConsoleEngine
 
     public function getCommandInstance(){
         $class = $this->parser->getClass();
-        //echo "ConsoleEngine: getInstance:".PHP_EOL.$class;
+        //echo "ConsoleEngine: getInstance:".PHP_EOL.$class.PHP_EOL;
+        //echo PHP_EOL.json_encode($this->parser->getParameters()).PHP_EOL;
+        
         if($class!== 'error'){
         
         return $this->commandFactory->getInstance($class, $this->parser->getParameters());

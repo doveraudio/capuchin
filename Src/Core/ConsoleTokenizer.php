@@ -20,7 +20,9 @@ class ConsoleTokenizer extends Tokenizer
         $stream = $this->input;
          //array_shift($stream);
          $rawinput = $stream;
-        // array_shift($rawinput);
+         array_shift($rawinput);
+         //echo "ConsolTokenizer, process(), line 23".PHP_EOL.json_encode($rawinput).PHP_EOL;
+
         $this->tokenstream = [
             "command"     => $stream[0],
             "parameters" => $this->TokenizeParameterStream(),

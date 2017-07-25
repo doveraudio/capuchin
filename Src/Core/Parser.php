@@ -61,7 +61,7 @@ class Parser
     
     public function setRawInput($input){
         if(is_array($input)){
-           $this->rawInput = implode("",$input); 
+           $this->rawInput = implode(" ",$input); 
         } else {
         $this->rawInput = $input;
         }
@@ -72,7 +72,10 @@ class Parser
     }
     
     public function getParameters(){
-        if($this->dictionary["parameters"][$this->command][0]=="{input}"){
+        //echo PHP_EOL.json_encode($this->dictionary).PHP_EOL;
+        if(in_array("{input}",$this->dictionary["parameters"][$this->command])){
+            //echo "THE DICTIONARY HAS THE KEY";
+            //echo $this->rawInput;
             return $this->rawInput;
         }else{
             
