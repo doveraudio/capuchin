@@ -34,6 +34,14 @@
                         "aliases": [
                             "chain"
                         ]
+                    },
+                    {
+                        "name": "exists",
+                        "aliases": [
+                            "check",
+                            "is"
+
+                        ]
                     }
                 ]
             },

@@ -72,6 +72,7 @@ class Parser
     }
     
     public function getParameters(){
+        echo "called get parameters ".json_encode($this->parameters).PHP_EOL;
         if(in_array("{input}",$this->dictionary["parameters"][$this->command])){
             return $this->rawInput;
         }else{

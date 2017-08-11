@@ -64,7 +64,7 @@ class ConsoleEngine
         $this->initialize();
         $this->parser->setCommand($this->tokenStream['command']);
         $this->parser->setRawInput($this->tokenStream['rawInput']);
-        $this->parser->setParameters([]);
+        $this->parser->setParameters($this->tokenStream['parameters']);
         return $this->invoke();
        
     }

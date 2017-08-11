@@ -21,6 +21,7 @@ class ConsoleTokenizer extends Tokenizer
          $parameters = [];
          if(count($stream)>1){
          $parameters = $this->TokenizeParameterStream();
+            echo json_encode($parameters);
          }else{
              $parameters = [];
          }
