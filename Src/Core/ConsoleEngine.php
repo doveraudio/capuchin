@@ -30,13 +30,16 @@ class ConsoleEngine
         //  whether alias or precise command.
         
         foreach($config->Capuchin->Commands as $command){
+
+            echo PHP_EOL.$command->name.":".PHP_EOL.json_encode($command).PHP_EOL;
             $dictionary["commands"][$command->name]  = "\\Capuchin" . str_replace("/","\\",$command->class);
             foreach($command->parameters as $parameter){
             $dictionary["parameters"][$command->name][$parameter->name] = $parameter->name;    //var_dump($parameter);
                 if(count($parameter->aliases>0)){
-                foreach($parameter->aliases as $alias)
+                foreach($parameter->aliases as $parameter_alias)
                 {
-                    $dictionary["parameters"][$command->name][$alias->name] = $parameter->name;
+                    echo "PARAMETER NAMES: ".$parameter->name." ALIAS NAMES: ".$parameter_alias->name.PHP_EOL;
+                    $dictionary["parameters"][$command->name][$parameter_alias->name] = $parameter->name;
                 }
                 }
             }
@@ -52,7 +55,7 @@ class ConsoleEngine
         $this->parser->setDictionary($dictionary);
     }
     
-     public function initialize(){
+    public function initialize(){
         $this->processArgs();
     }
     

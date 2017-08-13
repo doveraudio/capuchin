@@ -35,6 +35,7 @@ class Parser
 
     public function setCommand(string $value){
         echo PHP_EOL."Parser->setCommand(): \$value :" . $value;
+        echo json_encode($this->dictionary["commands"]);
         if(key_exists($value, $this->dictionary["commands"])){
         $this->command = $value;
         return $this->command;
@@ -45,17 +46,13 @@ class Parser
       
     }
     function setParameters(Array $args){
-        echo PHP_EOL.PHP_EOL."SET PARAMETERS , PArser.PHP:".PHP_EOL;
-        echo json_encode($args);
-        echo PHP_EOL;
-        echo json_encode($this->dictionary).PHP_EOL;
-        echo "****************";
-        echo PHP_EOL;
+       
         echo PHP_EOL;
         echo PHP_EOL;
         foreach($args as $key => $value){
-            echo "KEY:".$key."    Value: ".$value.PHP_EOL."WHERE'S MY DATA::".json_encode($this->dictionary["parameters"][$this->command]);
-            $this->parameters[$this->dictionary["parameters"][$this->command][0]->name] = $value;
+            echo "KEY:".$key."    Value: ".$value.PHP_EOL."WHERE'S MY DATA::".PHP_EOL;
+            echo json_encode($this->dictionary["parameters"][$this->command]);
+            //$this->parameters[$this->dictionary["parameters"][$this->command]["name"] = $value;
 
         }
 
@@ -73,6 +70,11 @@ class Parser
         
     }
     
+    public function addClass($command){
+
+    }
+
+
     public function setRawInput($input){
         if(is_array($input)){
            $this->rawInput = implode(" ",$input); 
