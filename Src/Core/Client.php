@@ -103,7 +103,7 @@ class Client
         
         }
         catch(Exception $ex){
-            $this->log = json_encode($ex);
+            $this->log .= json_encode($ex);
         return false;
     }
     

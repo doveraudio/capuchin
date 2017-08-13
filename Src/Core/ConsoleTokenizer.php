@@ -21,7 +21,7 @@ class ConsoleTokenizer extends Tokenizer
          $parameters = [];
          if(count($stream)>1){
          $parameters = $this->TokenizeParameterStream();
-            echo json_encode($parameters);
+            //echo json_encode($parameters);
          }else{
              $parameters = [];
          }
@@ -38,20 +38,23 @@ class ConsoleTokenizer extends Tokenizer
     
     public function TokenizeParameterStream(){
         $stream = $this->input;
+        $output=[];
         $values = array_filter($stream, 
                 function($key){
                                 return strpos($key, '--') === 0;
                               });
-        $output = [];
+      
         foreach($values as $parameter){
-            $tuple = ltrim($parameter, "--");
-            $output[]= explode("=", $tuple);
+            $text = ltrim($parameter, "--");
+            $tuple = explode("=", $text);
+            $output[$tuple[0]] = $tuple[1];
     }
+    //$output["dummy"] = "fake";
     if(count($output)==0){
         if(count($stream)>1){
-        $output = $stream[1];
+        $output = ["input"=>$stream[1]];
         }else{
-            $output = "";
+            $output = ["input"=>""];
         }
         
         

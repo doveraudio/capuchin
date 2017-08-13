@@ -27,10 +27,10 @@ class CommandFactory {
     public function getInstance($classname, $parameters){
         $class = $classname;
         if(class_exists($class)){
-            
+            echo PHP_EOL."Command Factory: getInstance() : ".$class.PHP_EOL;
             return new $class($parameters);
         }else{
-            return 'error';
+            return new Capuchin\Command\Error();
         }
     }
     

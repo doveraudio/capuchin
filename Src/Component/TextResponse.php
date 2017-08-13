@@ -7,7 +7,7 @@ class TextResponse extends Component
     private $textvalue;
     
     public function setTextValue($value){
-
+        echo PHP_EOL.json_encode($value).PHP_EOL;
         $this->textvalue = $value;
     }
 

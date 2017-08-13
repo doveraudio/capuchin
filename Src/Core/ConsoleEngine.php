@@ -31,11 +31,21 @@ class ConsoleEngine
         
         foreach($config->Capuchin->Commands as $command){
             $dictionary["commands"][$command->name]  = "\\Capuchin" . str_replace("/","\\",$command->class);
-            $dictionary["parameters"][$command->name] =  $command->parameters;
+            foreach($command->parameters as $parameter){
+            $dictionary["parameters"][$command->name][$parameter->name] = $parameter->name;    //var_dump($parameter);
+                if(count($parameter->aliases>0)){
+                foreach($parameter->aliases as $alias)
+                {
+                    $dictionary["parameters"][$command->name][$alias->name] = $parameter->name;
+                }
+                }
+            }
+            //$dictionary["parameters"][$command->name] = $command->parameters;
+            
             foreach($command->aliases as $alias)
             {
                 $dictionary["commands"][$alias] = "\\Capuchin" . str_replace("/","\\",$command->class);
-                $dictionary["parameters"][$alias] =  $command->parameters;
+                //$dictionary["parameters"][$alias] =  $command->parameters;
             }
         }
         
@@ -124,7 +134,10 @@ class ConsoleEngine
 
     public function getCommandInstance(){
         $class = $this->parser->getClass();
-        if($class!== 'error'){
+        if($class!== '' && $class !== null){
+        //$inputparams = $this->parser->getParameters();
+        
+
         return $this->commandFactory->getInstance($class, $this->parser->getParameters());
         }else{
             return 'error';
