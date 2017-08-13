@@ -34,7 +34,7 @@ class Parser
     }
 
     public function setCommand(string $value){
-        echo PHP_EOL."Parser->setCommand(): \$value :" . $value;
+        echo PHP_EOL."Parser->setCommand(): \$value :" . $value.PHP_EOL;
         echo json_encode($this->dictionary["commands"]);
         if(key_exists($value, $this->dictionary["commands"])){
         $this->command = $value;
@@ -47,15 +47,17 @@ class Parser
     }
     function setParameters(Array $args){
        
-        echo PHP_EOL;
-        echo PHP_EOL;
         foreach($args as $key => $value){
-            echo "KEY:".$key."    Value: ".$value.PHP_EOL."WHERE'S MY DATA::".PHP_EOL;
-            echo json_encode($this->dictionary["parameters"][$this->command]);
-            //$this->parameters[$this->dictionary["parameters"][$this->command]["name"] = $value;
+            echo PHP_EOL."PARAMETERS.".$this->command.":".PHP_EOL;
+            //echo json_encode($this->dictionary["parameters"][$this->command]);
+            //echo "KEY:".$key."    Value: ".$value.PHP_EOL."WHERE'S MY DATA::".PHP_EOL;
+            echo "Parser, line 55, setParameters:".PHP_EOL;
+            echo json_encode($this->dictionary["parameters"][$this->command]).PHP_EOL;
+
+            $this->parameters[$this->dictionary["parameters"][$this->command]->name] = $value;
 
         }
-
+        echo json_encode($this->dictionary["parameters"]);
        // $this->parameters = $args;
         
     }

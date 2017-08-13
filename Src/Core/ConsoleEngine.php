@@ -39,7 +39,7 @@ class ConsoleEngine
                 foreach($parameter->aliases as $parameter_alias)
                 {
                     echo "PARAMETER NAMES: ".$parameter->name." ALIAS NAMES: ".$parameter_alias->name.PHP_EOL;
-                    $dictionary["parameters"][$command->name][$parameter_alias->name] = $parameter->name;
+                    $dictionary["parameters"][$parameter_alias->name] = $parameter->name;
                 }
                 }
             }
@@ -48,10 +48,9 @@ class ConsoleEngine
             foreach($command->aliases as $alias)
             {
                 $dictionary["commands"][$alias] = "\\Capuchin" . str_replace("/","\\",$command->class);
-                //$dictionary["parameters"][$alias] =  $command->parameters;
+                $dictionary["parameters"][$alias] =  $command->parameters;
             }
         }
-        
         $this->parser->setDictionary($dictionary);
     }
     
