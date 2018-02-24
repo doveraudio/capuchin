@@ -31,14 +31,14 @@ class ConsoleEngine
         
         foreach($config->Capuchin->Commands as $command){
 
-            echo PHP_EOL.$command->name.":".PHP_EOL.json_encode($command).PHP_EOL;
+            //echo PHP_EOL.$command->name.":".PHP_EOL.json_encode($command).PHP_EOL;
             $dictionary["commands"][$command->name]  = "\\Capuchin" . str_replace("/","\\",$command->class);
             foreach($command->parameters as $parameter){
             $dictionary["parameters"][$command->name][$parameter->name] = $parameter->name;    //var_dump($parameter);
                 if(count($parameter->aliases>0)){
                 foreach($parameter->aliases as $parameter_alias)
                 {
-                    echo "PARAMETER NAMES: ".$parameter->name." ALIAS NAMES: ".$parameter_alias->name.PHP_EOL;
+                    //echo "PARAMETER NAMES: ".$parameter->name." ALIAS NAMES: ".$parameter_alias->name.PHP_EOL;
                     $dictionary["parameters"][$parameter_alias->name] = $parameter->name;
                 }
                 }
