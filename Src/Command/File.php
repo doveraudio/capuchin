@@ -12,11 +12,11 @@ class File extends Command
 private $parameters;
 public function invoke(){
     //echo "You have invoked the file command.";
-    echo json_encode($this->parameters);
+    //echo json_encode($this->parameters);
     
     
     if($this->parameters['load']){
-        echo $this->filesystem->load(getcwd().$this->parameters['load']);
+        echo $this->filesystem->load($this->parameters['load']);
     }
     return true;
     

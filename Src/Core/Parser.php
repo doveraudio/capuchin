@@ -48,13 +48,16 @@ class Parser
     function setParameters(Array $args){
        
         foreach($args as $key => $value){
-            //echo PHP_EOL."PARAMETERS.".$this->command.":".PHP_EOL;
+            //echo  $this->command.PHP_EOL;
             //echo json_encode($this->dictionary["parameters"][$this->command]);
             //echo "KEY:".$key."    Value: ".$value.PHP_EOL."WHERE'S MY DATA::".PHP_EOL;
-           // echo "Parser, line 55, setParameters:".PHP_EOL;
-           // echo json_encode($this->dictionary["parameters"][$this->command]).PHP_EOL;
+            //echo "Parser, line 55, setParameters:".PHP_EOL;
+           // echo json_encode($this->dictionary).PHP_EOL;
 
-            $this->parameters[$this->dictionary["parameters"][$this->command][0]->name] = $value;
+  echo json_encode($this->dictionary["parameters"][$this->command][$key]);
+//           $this->parameters[$this->dictionary["parameters"][$this->command][0]->name] = $value;
+            $this->parameters[$this->dictionary["parameters"][$this->command][$key]] = $value;
+           //echo json_encode($this->parameters[$this->dictionary["parameters"][$this->command]->name]);
 
         }
        /// echo json_encode($this->dictionary["parameters"]);
